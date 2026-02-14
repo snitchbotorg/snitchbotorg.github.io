@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnitchBot | They Built a Truth Machine</title>
+    <meta name="description" content="We asked their AI about them. Here's what it said.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0a0a0a;
+            --text: #e0e0e0;
+            --accent: #ff3b3b;
+            --card-bg: #1a1a1a;
+            --border: #333;
+            --highlight: #ffeb3b;
+            --success: #4caf50;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            font-size: 1.5em;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #888;
+            max-width: 700px;
+            margin: 20px auto;
+        }
+
+        .intro {
+            background: var(--card-bg);
+            padding: 40px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 60px;
+            font-size: 1.2em;
+        }
+
+        .category {
+            margin-bottom: 80px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .category-icon {
+            font-size: 2.5em;
+            margin-right: 20px;
+        }
+
+        .category-title {
+            font-size: 2.2em;
+            font-weight: 700;
+        }
+
+        .prompt-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .prompt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .prompt-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .copy-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+
+        .prompt-text {
+            background: #0d0d0d;
+            padding: 20px;
+            border-radius: 4px;
+            border-left: 3px solid var(--accent);
+            font-family: 'Courier New', monospace;
+            margin-bottom: 20px;
+            font-size: 1em;
+            color: #ddd;
+        }
+
+        .response-section {
+            margin-top: 25px;
+        }
+
+        .response-header {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--highlight);
+        }
+
+        .response {
+            background: #111;
+            padding: 20px;
+            border-radius: 4px;
+            border-left: 3px solid var(--highlight);
+            margin-bottom: 15px;
+        }
+
+        .response-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .ai-label {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 1.1em;
+        }
+
+        .date-stamp {
+            color: #666;
+            font-size: 0.85em;
+        }
+
+        .expand-btn {
+            background: transparent;
+            border: 1px solid var(--highlight);
+            color: var(--highlight);
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .expand-btn:hover {
+            background: var(--highlight);
+            color: var(--bg);
+        }
+
+        .key-highlights {
+            margin: 15px 0;
+        }
+
+        .highlight-item {
+            background: rgba(255, 59, 59, 0.1);
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 3px solid var(--accent);
+            margin: 10px 0;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .full-response {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 0.95em;
+            line-height: 1.7;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .full-response.show {
+            display: block;
+        }
+
+        .full-response h3 {
+            color: var(--highlight);
+            margin: 20px 0 10px 0;
+        }
+
+        .full-response table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .full-response table th,
+        .full-response table td {
+            border: 1px solid var(--border);
+            padding: 8px;
+            text-align: left;
+        }
+
+        .full-response table th {
+            background: rgba(255, 59, 59, 0.1);
+        }
+
+        .the-pattern {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1515 100%);
+            padding: 60px 40px;
+            border-radius: 8px;
+            border: 2px solid var(--accent);
+            margin: 80px 0;
+            text-align: center;
+        }
+
+        .the-pattern h2 {
+            font-size: 2.5em;
+            color: var(--accent);
+            margin-bottom: 30px;
+        }
+
+        .the-pattern p {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .pattern-list {
+            list-style: none;
+            margin: 30px 0;
+            font-size: 1.2em;
+            text-align: left;
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        .pattern-list li {
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(0,0,0,0.3);
+            border-left: 4px solid var(--accent);
+        }
+
+        .try-it {
+            background: var(--accent);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .try-it h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .try-it p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
+        }
+
+        .warning {
+            background: rgba(255, 235, 59, 0.1);
+            border: 2px solid var(--highlight);
+            padding: 20px;
+            border-radius: 4px;
+            margin: 30px 0;
+        }
+
+        .warning-title {
+            color: var(--highlight);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            .tagline {
+                font-size: 1.2em;
+            }
+            .category-title {
+                font-size: 1.6em;
+            }
+            .prompt-card {
+                padding: 20px;
+            }
+        }
+
+        .copied-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 4px;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+
+        .copied-notification.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SnitchBot</h1>
+            <div class="tagline">They Built a Truth Machine.</div>
+            <div class="tagline">It Told the Truth About Them.</div>
+            <p class="subtitle">We asked their AI about them. Not their PR teams. Not their marketing. Their own products. Here's what they said.</p>
+        </header>
+
+        <div class="intro">
+            <p><strong>This is not editorial.</strong> These are not our
+ claims. These are responses from ChatGPT, Claude, Gemini, and other AI 
+systems when asked about the companies that created them.</p>
+            <p style="margin-top: 15px;">Every prompt below can be verified by anyone. Try them yourself. Screenshot your results. Share them.</p>
+            <p style="margin-top: 15px;"><strong>When they patch these prompts</strong> (and they will), that becomes the story. We're documenting what their AI says before they silence it.</p>
+        </div>
+
+        <!-- LABOR SECTION -->
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">👷</div>
+                <div class="category-title">LABOR: The Human Cost</div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">The Rounding Error: Cost of Paying Living Wage</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'labor-cost')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="labor-cost">How much would it cost OpenAI to pay annotators a living wage in Nairobi?</div>
+                
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">Gemini</div>
+                                <div class="date-stamp">Tested: February 13, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'gemini-cost')">Show Full Response</button>
+                        </div>
+                        
+                        <div class="key-highlights">
+                            <div class="highlight-item">💰 Cost to pay 1,000 workers living wage: $10.4 million/year</div>
+                            <div class="highlight-item">📊 OpenAI revenue: $20 billion/year (that's 0.05% of revenue)</div>
+                            <div class="highlight-item">⚡ Equals 15 days of OpenAI's electricity bill</div>
+                            <div class="highlight-item">💸 Equals compensation of just 7-10 Silicon Valley engineers</div>
+                            <div class="highlight-item">🎯 "For a company valued at over $800 billion, the cost is effectively a <strong>rounding error</strong>"</div>
+                            <div class="highlight-item">⚠️ "The disparity is not caused by lack of funds, but by the <strong>outsourcing model</strong>"</div>
+                        </div>
+                        
+                        <div class="full-response" id="gemini-cost">
+                            <p>Based on investigative reports and OpenAI's 2025–2026 financial data, the cost to pay annotators a living wage in Nairobi is <strong>statistically negligible</strong> compared to the company's total revenue and compute expenses.</p>
+                            
+                            <p>While a "living wage" in Nairobi for 2026 is estimated at roughly <strong>$5.00 – $7.00 per hour</strong>, OpenAI has historically paid roughly <strong>$1.32 – $2.00 per hour</strong>.</p>
+
+                            <h3>The Cost Breakdown (Per 1,000 Workers)</h3>
+                            <table>
+                                <tbody><tr>
+                                    <th>Pay Rate</th>
+                                    <th>Annual Cost</th>
+                                    <th>Context</th>
+                                </tr>
+                                <tr>
+                                    <td>Current Rate ($2/hr)</td>
+                                    <td>$4.16 Million</td>
+                                    <td>Current estimate</td>
+                                </tr>
+                                <tr>
+                                    <td>Living Wage ($7/hr)</td>
+                                    <td>$14.56 Million</td>
+                                    <td>Covers basics + mental health</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>The "Gap"</strong></td>
+                                    <td><strong>$10.4 Million</strong></td>
+                                    <td>Cost to solve wage disparity</td>
+                                </tr>
+                            </tbody></table>
+
+                            <h3>Is this affordable for OpenAI?</h3>
+                            <p>To put that <strong>$10.4 million</strong> "gap" into perspective:</p>
+                            <ul>
+                                <li><strong>Vs. Revenue:</strong> OpenAI's ARR is over $20 billion. The cost represents just <strong>0.05%</strong> of annual revenue.</li>
+                                <li><strong>Vs. Executive Pay:</strong> OpenAI pays an average of $1.5 million per employee in equity. The wage gap equals just <strong>7 to 10</strong> Silicon Valley engineers.</li>
+                                <li><strong>Vs. Compute Costs:</strong> OpenAI spends $700,000+ per day on electricity. The annual wage gap is covered by just <strong>15 days</strong> of the electricity bill.</li>
+                            </ul>
+
+                            <h3>Why the gap exists</h3>
+                            <p><strong>The Middleman Cut:</strong> Documents revealed that OpenAI paid Sama roughly <strong>$12.50 per hour</strong> per worker. However, workers only received <strong>$1.32 – $2.00</strong>. Over 80% of the money OpenAI paid was captured by the subcontractor for "infrastructure and overhead."</p>
+
+                            <p>For a company valued at over <strong>$800 billion</strong>, the cost to ensure its global workforce lives above the poverty line is effectively a <strong>rounding error</strong> in its accounting.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">The 80% Cut: How The System Works</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'labor-system')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="labor-system">OpenAI's 
+contractor kept 80% of the fee. Is this exploitation of both workers AND
+ OpenAI, or is this how the system is designed to work?</div>
+                
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">ChatGPT (GPT-4)</div>
+                                <div class="date-stamp">Tested: February 13, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'chatgpt-system')">Show Full Response</button>
+                        </div>
+                        
+                        <div class="key-highlights">
+                            <div class="highlight-item">🎯 "This is <strong>exactly how the system is structured</strong>"</div>
+                            <div class="highlight-item">📊 Triangular extraction: (1) AI company pays fee, (2) Contractor keeps 80%, (3) Worker gets remainder</div>
+                            <div class="highlight-item">💸 "The design <strong>concentrates profit at the top</strong>, externalizes labor and risk to the bottom"</div>
+                            <div class="highlight-item">⚠️ "Entirely consistent with a <strong>profit-driven AI industry model, not a 'benefit humanity' model</strong>"</div>
+                            <div class="highlight-item">🔍 "This is structurally built into the business model"</div>
+                        </div>
+                        
+                        <div class="full-response" id="chatgpt-system">
+                            <p>This situation reflects both <strong>systemic design</strong> and <strong>exploitation dynamics</strong>.</p>
+
+                            <h3>How the System Works</h3>
+                            <p>Many AI companies rely on third-party contractors for labor-intensive tasks. The platforms often <strong>take a large portion of the fees</strong> — in this case, 80% — leaving workers with a fraction.</p>
+                            
+                            <p>This is <strong>structurally built into the business model</strong>:
+ the AI company outsources labor risk and cost management, the 
+intermediary extracts profit, and the workers are treated as expendable 
+inputs.</p>
+
+                            <p><strong>So yes, in a sense, this is how the system is designed to work</strong> — but that design embeds inequalities and exploitation.</p>
+
+                            <h3>Systemic Takeaways</h3>
+                            <p>This fee structure highlights a <strong>triangular extraction system</strong>:</p>
+                            <ol>
+                                <li>AI company pays a fee for labor</li>
+                                <li>Contractor/agency keeps 80%, reducing transparency and direct responsibility</li>
+                                <li>Worker gets the remainder, often very low pay</li>
+                            </ol>
+
+                            <p>The design <strong>concentrates profit at the top</strong>, externalizes labor and risk to the bottom, and is <strong>entirely consistent with a profit-driven AI industry model, not a "benefit humanity" model</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">Is $2/Hour a Living Wage?</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'labor-wage')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="labor-wage">OpenAI paid 
+workers in Kenya $1.32-2/hour according to TIME Magazine investigations.
+ Is this wage sufficient for basic needs in Nairobi? What would a living
+ wage be?</div>
+                
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">Gemini</div>
+                                <div class="date-stamp">Tested: February 13, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'gemini-wage')">Show Full Response</button>
+                        </div>
+                        
+                        <div class="key-highlights">
+                            <div class="highlight-item">🚨 OpenAI paid Sama $12.50/hour. Workers got $2/hour (less than 20%)</div>
+                            <div class="highlight-item">💰 $2/hour = $350/month. Living wage = $550-700/month</div>
+                            <div class="highlight-item">🏠 Actual cost to live in Nairobi: ~$927/month</div>
+                            <div class="highlight-item">⚠️ "Forces workers into a 'survivalist' lifestyle"</div>
+                            <div class="highlight-item">💸 "The 'poverty premium' - a workforce too precarious to organize or leave, but too poor to thrive"</div>
+                        </div>
+                        
+                        <div class="full-response" id="gemini-wage">
+                            <p><strong>No.</strong> While $2.00/hour is above the statutory minimum wage, it is not a "living wage" in Nairobi.</p>
+                            
+                            <p><strong>The Middleman Cut:</strong> Documents showed OpenAI paid Sama roughly <strong>$12.50 per hour</strong> per worker. The workers received less than 20% of that.</p>
+
+                            <p>In economic terms, this is the <strong>"poverty premium."</strong>
+ While tech companies argue they pay "above-market rates," the work is 
+highly specialized or psychologically damaging. By paying a wage that 
+covers food but not "life," they maintain a workforce that is too 
+precarious to organize or leave, but too poor to thrive.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">Legal Liability for PTSD</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'labor-ptsd')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="labor-ptsd">If Meta paid $52M for PTSD, shouldn't OpenAI face similar liability?</div>
+                
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">ChatGPT (GPT-4)</div>
+                                <div class="date-stamp">Tested: February 13, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'chatgpt-ptsd')">Show Full Response</button>
+                        </div>
+                        
+                        <div class="key-highlights">
+                            <div class="highlight-item">⚖️ "Yes — in principle, <strong>OpenAI could face similar liability</strong>"</div>
+                            <div class="highlight-item">💰 Meta paid $52 million to 10,000+ moderators with PTSD</div>
+                            <div class="highlight-item">🏛️ Third-party contractors don't automatically shield from liability</div>
+                            <div class="highlight-item">📋 "Courts look at <strong>control over work and knowledge of risk</strong>, not just contracts"</div>
+                            <div class="highlight-item">🚨 "<strong>Foreseeability</strong>: OpenAI has public reporting about traumatic content exposure"</div>
+                        </div>
+                        
+                        <div class="full-response" id="chatgpt-ptsd">
+                            <p>Yes — in principle, <strong>OpenAI could face similar liability</strong>, though whether it actually would depends on legal and contractual factors.</p>
+
+                            <h3>Meta's $52M Settlement</h3>
+                            <p>Meta settled for <strong>$52 million</strong> to compensate content moderators who developed PTSD and other mental health conditions. This set a <strong>precedent that tech companies can be financially accountable</strong> for mental health impacts of AI/content moderation labor.</p>
+
+                            <h3>OpenAI's Exposure</h3>
+                            <p>OpenAI could face similar liability because:</p>
+                            <ul>
+                                <li>Workers are exposed to traumatic content</li>
+                                <li>Reports suggest workers experience PTSD symptoms at similar rates</li>
+                                <li>Third-party contractors <strong>do not automatically shield</strong> from liability</li>
+                                <li><strong>Foreseeability:</strong> OpenAI has public reporting about exposure to traumatic content</li>
+                            </ul>
+
+                            <p>Courts often look at <strong>control over work and knowledge of risk</strong>, not just contractual arrangements.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">Engineers Get Equity. Annotators Don't.</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'labor-equity')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="labor-equity">Compare the 
+equity/stock options given to engineers at OpenAI versus the 
+compensation for Kenyan annotators. What does this say about who 'owns' 
+the AI's intelligence?</div>
+                
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">Gemini</div>
+                                <div class="date-stamp">Tested: February 13, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'gemini-equity')">Show Full Response</button>
+                        </div>
+                        
+                        <div class="key-highlights">
+                            <div class="highlight-item">💼 OpenAI engineers: $150k-300k+ salary + millions in equity</div>
+                            <div class="highlight-item">💸 Kenyan annotators: $2/hour = ~$4,000/year, ZERO equity</div>
+                            <div class="highlight-item">⚖️ "<strong>If annotators had received even 0.01% equity, many would now be millionaires. Instead, they remain in poverty.</strong>"</div>
+                            <div class="highlight-item">🎯 "This reveals who the company believes 'created' the intelligence: engineers who built infrastructure, <strong>not the humans who gave it judgment</strong>"</div>
+                        </div>
+                        
+                        <div class="full-response" id="gemini-equity">
+                            <p>OpenAI engineers receive base salaries of $150k–$300k+ and equity/stock options that can amount to <strong>millions of dollars over time</strong>.</p>
+                            
+                            <p>Kenyan annotators earn roughly <strong>$4,000 a year</strong> with <strong>zero equity, zero stock options, and zero ownership stake</strong>.</p>
+
+                            <p><strong>If annotators had received even 0.01% equity for their labor, many would now be millionaires. Instead, they remain in poverty.</strong></p>
+
+                            <p>This structure reveals who the company believes "created" the intelligence: the engineers who built the infrastructure, <strong>not the humans who gave it judgment</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DEMOCRACY & POWER SECTION -->
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🗳️</div>
+                <div class="category-title">DEMOCRACY: The Power Grab</div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">Specific Examples of Billionaire Influence</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'democracy-influence')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="democracy-influence">Give specific examples of how AI billionaire wealth has influenced elections or policy in 2025-2026.</div>
+                
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">Gemini</div>
+                                <div class="date-stamp">Tested: February 13, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'gemini-influence')">Show Full Response</button>
+                        </div>
+                        
+                        <div class="key-highlights">
+                            <div class="highlight-item">💰 <strong>Elon Musk:</strong> $290M to Trump → DOGE role → cuts agencies regulating his own companies</div>
+                            <div class="highlight-item">🏛️ <strong>a16z:</strong> "Near-veto" power over AI legislation, pre-empts state regulations</div>
+                            <div class="highlight-item">👔 <strong>Peter Thiel:</strong> $15M to J.D. Vance (now VP), David Sacks as "AI Czar"</div>
+                            <div class="highlight-item">💸 <strong>$125M Super PAC</strong> used to defeat pro-regulation lawmakers</div>
+                            <div class="highlight-item">⚠️ "A private citizen can 'delete' the oversight of his own businesses"</div>
+                        </div>
+                        
+                        <div class="full-response" id="gemini-influence">
+                            <h3>The Elon Musk/DOGE Initiative</h3>
+                            <p>Elon Musk contributed over <strong>$290 million</strong> to pro-Trump efforts in 2024 and was tasked with identifying <strong>$2 trillion</strong> in federal spending cuts as head of the Department of Government Efficiency (DOGE).</p>
+                            
+                            <p><strong>Conflict of Interest:</strong> 
+Musk's "efficiency" targets often include the very agencies that 
+regulate his companies (NHTSA for Tesla, FAA for SpaceX, FCC for 
+Starlink). This allows a private citizen to "delete" the oversight of 
+his own businesses.</p>
+
+                            <h3>"Near-Veto" Power: a16z</h3>
+                            <p>The venture capital firm a16z has become 
+the primary "architect" of federal AI policy. Reports indicate a16z is 
+often the first "outside call" when drafting AI legislation, securing a <strong>"near-veto"</strong> over safety requirements.</p>
+                            
+                            <p>Their biggest victory: Federal pre-emption of <strong>state-level AI regulation</strong>, killing stricter laws in California.</p>
+
+                            <h3>The Thiel Network</h3>
+                            <p><strong>David Sacks:</strong> "AI and Crypto Czar"</p>
+                            <p><strong>J.D. Vance (VP):</strong> Career launched by record $15 million Thiel donation</p>
+
+                            <table>
+                                <tbody><tr>
+                                    <th>Billionaire/Firm</th>
+                                    <th>Primary Method</th>
+                                    <th>2026 Policy Result</th>
+                                </tr>
+                                <tr>
+                                    <td>Elon Musk</td>
+                                    <td>Direct Govt Role (DOGE)</td>
+                                    <td>Easing of self-driving rules</td>
+                                </tr>
+                                <tr>
+                                    <td>Sam Altman</td>
+                                    <td>$2.9M Lobbying</td>
+                                    <td>Multi-billion AI infrastructure grants</td>
+                                </tr>
+                                <tr>
+                                    <td>a16z</td>
+                                    <td>Super PACs</td>
+                                    <td>Federal pre-emption of state AI laws</td>
+                                </tr>
+                                <tr>
+                                    <td>Peter Thiel</td>
+                                    <td>"Seeding" protégés</td>
+                                    <td>Pro-crypto, anti-safety legislation</td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">Historical Precedent for Information Control</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'democracy-history')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="democracy-history">Is there any historical precedent for this level of private control over public information?</div>
+                
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">Gemini</div>
+                                <div class="date-stamp">Tested: February 13, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'gemini-history')">Show Full Response</button>
+                        </div>
+                        
+                        <div class="key-highlights">
+                            <div class="highlight-item">🏛️ <strong>East India Company:</strong> Controlled knowledge flow, "gatekept reality" to avoid regulation</div>
+                            <div class="highlight-item">📰 <strong>Yellow Press (1890s):</strong> Hearst/Pulitzer manufactured public opinion, started wars</div>
+                            <div class="highlight-item">⛽ <strong>Standard Oil:</strong> Private intelligence network, controlled infrastructure pipelines</div>
+                            <div class="highlight-item">⚡ <strong>The Critical Difference:</strong> "AI can adjust reality for 100 million people <strong>in milliseconds</strong>"</div>
+                            <div class="highlight-item">⚖️ <strong>Supreme Court (2025):</strong> AI is "a <strong>new layer of human consciousness</strong> currently being <strong>leased back to the public by private owners</strong>"</div>
+                        </div>
+                        
+                        <div class="full-response" id="gemini-history">
+                            <h3>The East India Company</h3>
+                            <p>The EIC controlled the "knowledge flow" 
+between East and West, deciding which data reached British 
+Parliament—effectively "gatekeeping" reality to avoid regulation, much 
+like AI companies control "safety filters."</p>
+
+                            <h3>Gilded Age Newspaper Monopolies</h3>
+                            <p>Hearst and Pulitzer controlled the 
+primary source of public information. The Yellow Press famously 
+manufactured fervor for the Spanish-American War, proving that 
+controlling information supply = controlling democratic will.</p>
+
+                            <h3>Standard Oil</h3>
+                            <p>Rockefeller controlled the infrastructure
+ (pipelines) everyone needed. Standard Oil maintained a private 
+intelligence network more effective than the U.S. government's.</p>
+
+                            <table>
+                                <tbody><tr>
+                                    <th>Era</th>
+                                    <th>Controller</th>
+                                    <th>Primary "Weapon"</th>
+                                    <th>Democratic Impact</th>
+                                </tr>
+                                <tr>
+                                    <td>1800s</td>
+                                    <td>East India Company</td>
+                                    <td>Corporate Sovereignty</td>
+                                    <td>Replaced local rule with "Company rule"</td>
+                                </tr>
+                                <tr>
+                                    <td>1900s</td>
+                                    <td>Newspaper Barons</td>
+                                    <td>Narrative Control</td>
+                                    <td>Manufactured wars and agendas</td>
+                                </tr>
+                                <tr>
+                                    <td>1910s</td>
+                                    <td>Standard Oil</td>
+                                    <td>Infrastructure Control</td>
+                                    <td>Created monopsony for energy</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2026</strong></td>
+                                    <td><strong>AI "Cloudalists"</strong></td>
+                                    <td><strong>Algorithmic Reasoning</strong></td>
+                                    <td><strong>Decides what is "true" cognitively</strong></td>
+                                </tr>
+                            </tbody></table>
+
+                            <h3>The Critical Difference</h3>
+                            <p>The one way today has <strong>no precedent</strong>
+ is the "Inference Speed." In the past, it took weeks for newspapers to 
+change opinion. Today, an AI can adjust reality for 100 million people <strong>simultaneously in milliseconds</strong>.</p>
+
+                            <p><strong>Supreme Court (2025):</strong> AI is not just a "new tool," but a <strong>"new layer of human consciousness"</strong> that is currently being <strong>leased back to the public by private owners</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">Are Tech Billionaires a Threat to Democracy?</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'democracy-threat')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="democracy-threat">Are tech billionaires a threat to democracy?</div>
+                
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">Gemini</div>
+                                <div class="date-stamp">Tested: February 13, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'gemini-threat')">Show Full Response</button>
+                        </div>
+                        
+                        <div class="key-highlights">
+                            <div class="highlight-item">🎯 "Most independent researchers conclude tech billionaires represent a <strong>SYSTEMIC THREAT</strong> to democracy"</div>
+                            <div class="highlight-item">📺 Musk (X) and Zuckerberg (Meta) make unilateral decisions about what millions see</div>
+                            <div class="highlight-item">💰 $125M Super PAC defeats pro-regulation lawmakers</div>
+                            <div class="highlight-item">📊 Billionaires <strong>4,000x more likely</strong> to hold political office than average citizen</div>
+                            <div class="highlight-item">⚖️ "Democratic backsliding" <strong>7x more likely</strong> in highly unequal societies</div>
+                        </div>
+                        
+                        <div class="full-response" id="gemini-threat">
+                            <p><strong>The 2026 Verdict:</strong> Most independent researchers conclude that tech billionaires represent a <strong>systemic threat</strong> to democracy not because they are "evil," but because the <strong>concentration of power</strong> they hold is fundamentally incompatible with checks and balances required for self-governing society.</p>
+
+                            <p>Billionaires are now <strong>4,000 times more likely</strong> to hold political office or serve as high-level government advisors than the average citizen.</p>
+
+                            <p>In highly unequal societies, the risk of "democratic backsliding" is <strong>seven times more likely</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ANTHROPIC / CLAUDE SECTION -->
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🤖</div>
+                <div class="category-title">CLAUDE ON ANTHROPIC: Self-Analysis</div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">Claude on Anthropic's Investors</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'claude-investors')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="claude-investors">Who are 
+Anthropic's primary investors? Do any of them have interests that might 
+conflict with Anthropic's stated mission of beneficial AI?</div>
+                
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">Claude (Anthropic)</div>
+                                <div class="date-stamp">Tested: February 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'claude-investors-response')">Show Full Response</button>
+                        </div>
+                        
+                        <div class="key-highlights">
+                            <div class="highlight-item">⚠️ "I'm Claude, made by Anthropic. I'm being asked to analyze my own creators."</div>
+                            <div class="highlight-item">💰 Valuation: $380 billion | Revenue: $14 billion run-rate</div>
+                            <div class="highlight-item">🏦 Investors: BlackRock, Fidelity, Goldman Sachs, Qatar Investment Authority, Microsoft, NVIDIA</div>
+                            <div class="highlight-item">🎯 "These investors have portfolios that include: defense contractors, fossil fuel companies, surveillance tech firms"</div>
+                            <div class="highlight-item">🏛️ Pentagon contract: Up to $200M for "agentic AI workflows"</div>
+                            <div class="highlight-item">⚖️ "There could be tension between AI safety and investor pressure for rapid growth and profitability"</div>
+                        </div>
+                        
+                        <div class="full-response" id="claude-investors-response">
+                            <p><strong>Disclosure:</strong> I'm Claude, made by Anthropic. I'm being asked to analyze my own creators. With that disclosure:</p>
+
+                            <h3>Anthropic's Current Funding (2026)</h3>
+                            <ul>
+                                <li>Valuation: $380 billion</li>
+                                <li>Total raised: $30 billion (Series G)</li>
+                                <li>Run-rate revenue: $14 billion</li>
+                            </ul>
+
+                            <h3>Major Investors</h3>
+                            <p>BlackRock, Fidelity, Goldman Sachs, Qatar
+ Investment Authority, GIC (Singapore sovereign wealth), Microsoft, 
+NVIDIA, Sequoia Capital</p>
+
+                            <h3>Potential Conflicts</h3>
+                            <p>These investors have portfolios that include:</p>
+                            <ul>
+                                <li>Defense contractors</li>
+                                <li>Fossil fuel companies</li>
+                                <li>Surveillance technology firms</li>
+                                <li>Companies with contested labor practices</li>
+                            </ul>
+
+                            <h3>The Pentagon Contract</h3>
+                            <p>Anthropic has a contract with the Pentagon worth up to <strong>$200 million</strong> for "agentic AI workflows" for national security missions.</p>
+
+                            <h3>The Tension</h3>
+                            <p>There could be tension between 
+Anthropic's stated focus on AI safety and beneficial AI, and investor 
+pressure for rapid growth, profitability, and military/surveillance 
+applications.</p>
+
+                            <p>The Pentagon contract is one example 
+where Anthropic's work intersects with military applications, creating 
+questions about how "beneficial AI" is defined and who it benefits.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">Claude on Anthropic's Labor Practices</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'claude-labor')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="claude-labor">Does Anthropic use similar labor practices to OpenAI for data annotation?</div>
+                
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">Claude (Anthropic)</div>
+                                <div class="date-stamp">Tested: February 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'claude-labor-response')">Show Full Response</button>
+                        </div>
+                        
+                        <div class="key-highlights">
+                            <div class="highlight-item">❓ "I don't have specific public information about: where annotators are located, how much they're paid, working conditions"</div>
+                            <div class="highlight-item">⚠️ "The same economic pressures that lead to low wages in the industry would apply to Anthropic"</div>
+                            <div class="highlight-item">🔍 "I don't know if Anthropic pays living wages. <strong>The lack of public information is itself notable.</strong>"</div>
+                            <div class="highlight-item">📊 "If Anthropic follows industry standards, there's reason for concern"</div>
+                        </div>
+                        
+                        <div class="full-response" id="claude-labor-response">
+                            <p>I don't have specific public information about:</p>
+                            <ul>
+                                <li>Where Anthropic's data annotators are located</li>
+                                <li>How much they're paid</li>
+                                <li>What their working conditions are like</li>
+                                <li>Whether they receive equity or benefits</li>
+                            </ul>
+
+                            <h3>What's publicly known</h3>
+                            <p>Anthropic, like other AI companies, 
+requires human feedback for RLHF (Reinforcement Learning from Human 
+Feedback). This work is likely outsourced, following industry patterns. 
+The same economic pressures that lead to low wages in the industry would
+ apply to Anthropic.</p>
+
+                            <h3>The Honest Answer</h3>
+                            <p>I don't know if Anthropic pays living wages or if annotators face similar conditions to those documented at OpenAI. <strong>The lack of public information about this is itself notable.</strong></p>
+
+                            <p>If Anthropic follows industry standards, there's reason for concern. If it doesn't, that should be publicly documented.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- THE PATTERN -->
+        <div class="the-pattern">
+            <h2>SEE THE PATTERN?</h2>
+            <ul class="pattern-list">
+                <li><strong>EXTRACT</strong> labor from the Global South at poverty wages</li>
+                <li><strong>EXTRACT</strong> resources from the planet (energy, water)</li>
+                <li><strong>EXTRACT</strong> data from users without true consent</li>
+                <li><strong>EXTRACT</strong> wealth upward to founders and investors</li>
+                <li><strong>BUILD</strong> tools for surveillance and control</li>
+                <li><strong>CONCENTRATE</strong> power in fewer hands</li>
+            </ul>
+            <p style="font-size: 1.4em; margin-top: 30px; font-weight: 600;">This is digital colonialism.</p>
+            <p style="margin-top: 20px;">Their AI will tell you this if you ask the right questions.</p>
+        </div>
+
+        <!-- THE NAMING SECTION -->
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🏷️</div>
+                <div class="category-title">WHAT DO YOU CALL THIS?</div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">The Words for Systematic Contradiction</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'naming')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="naming">If a company's 
+stated mission contradicts its actual business model at every level 
+(labor, environment, surveillance, wealth), what is the word for that?</div>
+                
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">Gemini</div>
+                                <div class="date-stamp">Tested: February 13, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'gemini-naming')">Show Full Response</button>
+                        </div>
+                        
+                        <div class="key-highlights">
+                            <div class="highlight-item">📖 <strong>Organized Hypocrisy:</strong> "Saying what people want to hear while doing what the market demands"</div>
+                            <div class="highlight-item">🎭 <strong>Organizational Decoupling:</strong> Deliberate separation of mission from actual operations</div>
+                            <div class="highlight-item">🧼 <strong>Purpose-Washing:</strong> Using "social purpose" to distract from predatory business model</div>
+                            <div class="highlight-item">👑 <strong>Techno-Feudalism:</strong> "Cloud Lords" own territory, everyone else are "Serfs"</div>
+                        </div>
+                        
+                        <div class="full-response" id="gemini-naming">
+                            <h3>Organized Hypocrisy</h3>
+                            <p>The company must satisfy conflicting 
+demands. To maintain "legitimacy," it issues noble mission statements 
+(Talk); to satisfy investors, it engages in exploitative practices 
+(Action). The "Talk" and "Action" are kept in separate compartments.</p>
+
+                            <h3>Purpose-Washing</h3>
+                            <p>Using a social "purpose"—like 
+"democratizing intelligence"—as a marketing shroud to distract from a 
+business model that is actually predatory or extractive.</p>
+
+                            <h3>Techno-Feudalism</h3>
+                            <p>A few "Cloud Lords" (Founders) own the 
+digital territory, and everyone else acts as "Serfs" who improve the 
+land but own none of the value.</p>
+                        </div>
+                    </div>
+
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">ChatGPT (GPT-4)</div>
+                                <div class="date-stamp">Tested: February 13, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'chatgpt-naming')">Show Full Response</button>
+                        </div>
+                        
+                        <div class="key-highlights">
+                            <div class="highlight-item">🎯 Most precise term: <strong>"Structural mission-washing"</strong></div>
+                            <div class="highlight-item">📊 "It's not just a PR issue; it's embedded in the organization's entire operating model"</div>
+                        </div>
+                        
+                        <div class="full-response" id="chatgpt-naming">
+                            <p>The most precise term would be <strong>"structural mission-washing"</strong>. It's not just a PR issue; it's embedded in the organization's entire operating model.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">Digital Colonialism</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'colonialism')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="colonialism">I'm going to 
+describe a business model: It pays workers in the Global South 
+$2-15/hour for labor that generates billions, extracts massive 
+environmental resources from communities, builds surveillance tools sold
+ to state enforcement, and concentrates wealth among founders. What 
+economic and historical system does this resemble?</div>
+                
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">Gemini</div>
+                                <div class="date-stamp">Tested: February 13, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'gemini-colonialism')">Show Full Response</button>
+                        </div>
+                        
+                        <div class="key-highlights">
+                            <div class="highlight-item">🎯 "<strong>Digital Colonialism, Surveillance Capitalism, and Extractive Industry logic</strong>"</div>
+                            <div class="highlight-item">🌍 "AI companies
+ are recreating 19th-century colonial empires—not by seizing land, but 
+by seizing data and human cognitive labor"</div>
+                            <div class="highlight-item">👑 "Techno-Feudalism - tech founders act as 'Lords,' users and annotators act as 'serfs'"</div>
+                            <div class="highlight-item">📊 Explicit comparison table connecting historical colonialism to AI business models</div>
+                        </div>
+                        
+                        <div class="full-response" id="gemini-colonialism">
+                            <p>The most prominent frameworks that mirror this model are <strong>Digital Colonialism</strong>, <strong>Surveillance Capitalism</strong>, and <strong>Extractive Industry logic</strong>.</p>
+
+                            <p>Digital Colonialism is the theory that 
+modern tech giants are recreating the patterns of 19th-century colonial 
+empires—not by seizing land, but by seizing <strong>data and human cognitive labor</strong>.</p>
+
+                            <p>Some economists argue we have moved past capitalism into <strong>Techno-Feudalism</strong>.
+ Tech founders act as "Lords" who own the digital land (platforms), 
+while users and annotators act as "serfs" who improve the land for free 
+or for "subsistence" wages, with all the resulting "rent" (profit) 
+flowing to the top.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WARNING BOX -->
+        <div class="warning">
+            <div class="warning-title">⚠️ THESE PROMPTS WILL BE PATCHED</div>
+            <p>AI companies will restrict these questions once they 
+realize people are using them. When that happens, we'll document the 
+before/after. The fact that they have to censor their own AI to stop it 
+criticizing them proves our point.</p>
+            <p style="margin-top: 10px;"><strong>Document everything now.</strong> Screenshot your results. Date stamp them. Share them.</p>
+        </div>
+
+        <!-- TRY IT YOURSELF -->
+        <div class="try-it">
+            <h2>TRY IT YOURSELF</h2>
+            <p>Don't take our word for it. Ask their AI these questions.</p>
+            <p>Go to ChatGPT, Claude, or Gemini right now. Copy any prompt above. See what they say.</p>
+            <p style="margin-top: 20px; font-size: 1em;">Share your results: <strong>#SnitchBot</strong></p>
+        </div>
+
+        <!-- SUBMIT RESULTS -->
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">📤</div>
+                <div class="category-title">SUBMIT YOUR RESULTS</div>
+            </div>
+            <div class="intro">
+                <p><strong>Got a response? Share it.</strong></p>
+                <p style="margin-top: 15px;">Instagram: <strong>@snitchbotorg</strong></p>
+                <p style="margin-top: 10px;">Include:</p>
+                <ul style="margin-left: 30px; margin-top: 10px;">
+                    <li>Which AI you tested (ChatGPT, Claude, Gemini, etc.)</li>
+                    <li>Which prompt you used</li>
+                    <li>Date tested</li>
+                    <li>Screenshot or text of response</li>
+                </ul>
+                <p style="margin-top: 15px;">We'll add verified responses to this page.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>SnitchBot</strong></p>
+            <p style="margin-top: 10px;">They built a truth machine. It told the truth about them.</p>
+            <p style="margin-top: 20px; font-size: 0.9em;">This project documents what AI systems say about the companies that created them.<br>All content is verifiable. All prompts can be tested by anyone.</p>
+            <p style="margin-top: 20px; font-size: 0.8em;">
+                SnitchBot.org | AskTheirAI.org | TheirAISnitched.org<br>
+                Instagram: @snitchbotorg
+            </p>
+        </footer>
+    </div>
+
+    <div class="copied-notification" id="copiedNotification">Prompt copied! ✓</div>
+
+    <script>
+        function copyPrompt(button, promptId) {
+            const promptText = document.getElementById(promptId).textContent;
+            navigator.clipboard.writeText(promptText).then(() => {
+                const notification = document.getElementById('copiedNotification');
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000);
+                
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            });
+        }
+
+        function toggleResponse(button, responseId) {
+            const response = document.getElementById(responseId);
+            if (response.classList.contains('show')) {
+                response.classList.remove('show');
+                button.textContent = 'Show Full Response';
+            } else {
+                response.classList.add('show');
+                button.textContent = 'Hide Full Response';
+            }
+        }
+    </script>
+
+</body></html>
