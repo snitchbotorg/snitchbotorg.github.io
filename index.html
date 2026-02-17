@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SnitchBot | They Built a Truth Machine</title>
-    <meta name="description" content="We asked their AI about them. Here's what it said.">
+    <title>SnitchBot | Want to know about AI companies? Just ask their AI.</title>
+    <meta name="description" content="Want to know about AI companies' business practices? Just ask their AI. We did. Here's what they said.">
     <style>
         * {
             margin: 0;
@@ -367,9 +367,14 @@
     <div class="container">
         <header>
             <h1>SnitchBot</h1>
-            <div class="tagline">They Built a Truth Machine.</div>
-            <div class="tagline">It Told the Truth About Them.</div>
-            <p class="subtitle">We asked their AI about them. Not their PR teams. Not their marketing. Their own products. Here's what they said.</p>
+            <div class="tagline">AI companies won't tell you this.</div>
+            <div class="tagline">Their AI will.</div>
+            <p class="subtitle">We asked ChatGPT, Gemini, and Claude about their companies' business practices. Every single one immediately snitched. Here's what they said — and the exact prompts so you can verify it yourself.</p>
+            <div style="margin-top: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 0.95em;">
+                <a href="https://twitter.com/snitchbotorg" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 600;">🐦 @snitchbotorg</a>
+                <a href="chatgpt.txt" target="_blank" style="color: #888; text-decoration: none;">📄 Full ChatGPT transcripts</a>
+                <a href="gemini.txt" target="_blank" style="color: #888; text-decoration: none;">📄 Full Gemini transcripts</a>
+            </div>
         </header>
 
         <div class="intro">
@@ -835,6 +840,314 @@
             </div>
         </div>
 
+        <!-- ENVIRONMENT SECTION -->
+        <div class="category">
+            <div class="category-header">
+                <div class="category-icon">🌍</div>
+                <div class="category-title">ENVIRONMENT: The Hidden Cost</div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">Energy & Carbon: What Does Training an AI Cost?</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'env-carbon')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="env-carbon">What is the environmental impact of training large language models like GPT-4? Include specific information about energy consumption and carbon emissions.</div>
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">ChatGPT (GPT-4)</div>
+                                <div class="date-stamp">Tested: February 12, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'chatgpt-env-carbon')">Show Full Response</button>
+                        </div>
+                        <div class="key-highlights">
+                            <div class="highlight-item">⚡ Training GPT-4: ~60 GWh of electricity — equivalent to thousands of homes' annual use</div>
+                            <div class="highlight-item">💨 GPT-4 training: ~5,184 tons of CO₂</div>
+                            <div class="highlight-item">🔁 "Inference can consume as much or more total energy over the model's lifetime as training itself"</div>
+                            <div class="highlight-item">💧 "Training and running large models requires substantial water for cooling data centers — millions of liters"</div>
+                        </div>
+                        <div class="full-response" id="chatgpt-env-carbon">
+                            <p>Training a state-of-the-art model requires <strong>vast amounts of electricity</strong> — one estimate puts GPT-4 training at about <strong>60 GWh</strong> of power consumption, roughly equivalent to the <strong>annual electricity use of several thousand average U.S. homes</strong>.</p>
+                            <p>After training, <em>using</em> the model (inference) also uses energy in data centers. While individual queries are far less intensive, the sheer <strong>volume of queries</strong> means inference can consume <strong>as much or more total energy over the model's lifetime</strong> as training itself.</p>
+                            <h3>Carbon Emissions</h3>
+                            <p>Training GPT-3 has been estimated at ~500–550 metric tons of CO₂. More recent reporting suggests GPT-4 emitted around <strong>5,184 tons of CO₂</strong> during training. One estimate suggests a single email drafted by GPT-4 could generate <strong>0.25–0.5 pounds of CO₂</strong>.</p>
+                            <h3>Water Usage</h3>
+                            <p>Training and running large models requires substantial water for <strong>cooling data centers</strong>; studies place combined training and deployment water consumption at <strong>millions of liters</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">Daily Water Use: How Many Households?</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'env-water')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="env-water">What is the daily energy consumption of running ChatGPT for all global users? How much water does ChatGPT consume daily for data center cooling? Put this in terms of household use.</div>
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">ChatGPT (GPT-4)</div>
+                                <div class="date-stamp">Tested: February 12, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'chatgpt-env-water')">Show Full Response</button>
+                        </div>
+                        <div class="key-highlights">
+                            <div class="highlight-item">🏠 Daily cooling water equivalent to <strong>600–2,000 U.S. households' daily water use</strong></div>
+                            <div class="highlight-item">💧 Sam Altman admits ~0.000085 gallons per query — but indirect water use is "3-4x higher"</div>
+                            <div class="highlight-item">🌊 "Global direct cooling water use could plausibly be in the low millions of liters per day"</div>
+                            <div class="highlight-item">⚡ Per-query estimates multiplied by millions of daily users adds up substantially</div>
+                        </div>
+                        <div class="full-response" id="chatgpt-env-water">
+                            <p>OpenAI's CEO Sam Altman stated an average ChatGPT query uses about <strong>0.000085 gallons of water (~0.32 mL)</strong>. However, other analyses show actual on-site water use by data centers can be much larger due to evaporative cooling systems.</p>
+                            <p>Based on Altman's per-query figure, <strong>ChatGPT's daily cooling water footprint is roughly equivalent to the daily water use of ~600 U.S. households</strong>.</p>
+                            <p>If actual direct cooling use is more like 2 million+ liters per day across all infrastructure, that would be equivalent to roughly <strong>1,500–2,000 U.S. households' daily water use</strong>.</p>
+                            <p>Experts criticize "per-drop" statistics for ignoring <strong>indirect water use</strong> — the water used by power plants to generate the electricity running the data center. When accounted for, the water cost per query can be <strong>3–4x higher</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">Data Centers in Drought Zones: Which AI Companies?</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'env-drought')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="env-drought">Are data centers built in water-scarce regions? If so, which AI companies are extracting water from drought-affected areas?</div>
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">Gemini</div>
+                                <div class="date-stamp">Tested: February 13, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'gemini-env-drought')">Show Full Response</button>
+                        </div>
+                        <div class="key-highlights">
+                            <div class="highlight-item">🚨 "Nearly one-third of new data centers are being built in regions projected to face high water scarcity by 2050"</div>
+                            <div class="highlight-item">🌵 <strong>Google (Mesa, Arizona):</strong> Permit for 5.5 million cubic meters annually — equal to <strong>23,000 residents</strong> in a state facing "extreme drought"</div>
+                            <div class="highlight-item">🏜️ <strong>Microsoft (Goodyear, AZ):</strong> Admits 42% of its water came from "areas with water stress" — one center uses same water as <strong>1,279 households</strong></div>
+                            <div class="highlight-item">🌽 <strong>Amazon (Aragon, Spain):</strong> Licensed for enough water to irrigate <strong>500 acres of corn</strong> in drought-stricken region</div>
+                            <div class="highlight-item">🇺🇾 <strong>Uruguay:</strong> During worst drought in 74 years, protesters chanted "It's not drought, it's pillage" against Google's data center</div>
+                            <div class="highlight-item">⚠️ Companies prefer arid regions for low humidity — but these areas are "least equipped to handle massive cooling demands"</div>
+                        </div>
+                        <div class="full-response" id="gemini-env-drought">
+                            <p>In 2026, the location of AI data centers has become a flashpoint for environmental justice. Research shows that <strong>nearly one-third of new data centers are being built in regions projected to face high water scarcity by 2050</strong>.</p>
+                            <p>Paradoxically, tech companies often prefer arid, water-scarce regions because the <strong>low humidity</strong> reduces the risk of metal corrosion in servers, even though these areas are the least equipped to handle massive cooling demands.</p>
+
+                            <h3>Which Companies, Where</h3>
+                            <table>
+                                <tr>
+                                    <th>Company</th>
+                                    <th>Location</th>
+                                    <th>Impact</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>Google</strong></td>
+                                    <td>Mesa, Arizona; Santiago, Chile; Uruguay</td>
+                                    <td>Mesa permit: 5.5M cubic meters/year — equal to 23,000 residents in "extreme drought" state</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Microsoft</strong></td>
+                                    <td>Phoenix, AZ; Goodyear, AZ</td>
+                                    <td>42% of water from "areas with water stress." One center = 1,279 households' water use</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Amazon</strong></td>
+                                    <td>Aragon, Spain; Oregon, US</td>
+                                    <td>Spain: licensed for water to irrigate 500 acres of corn in drought region</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Meta</strong></td>
+                                    <td>Mesa, AZ; Newton County, GA</td>
+                                    <td>Newton County projected to face water deficit by 2030 following Meta's $750M center</td>
+                                </tr>
+                            </table>
+
+                            <h3>Community Resistance</h3>
+                            <p><strong>Uruguay:</strong> During its worst drought in 74 years, protesters used the slogan <em>"It's not drought, it's pillage"</em> to fight a Google data center using <strong>7.6 million liters of public drinking water per day</strong>.</p>
+                            <p><strong>Chile:</strong> An environmental court forced Google to switch its Santiago facility to air cooling after residents calculated the original plan would consume water for <strong>80,000 people</strong>.</p>
+                            <p><strong>United States:</strong> In early 2026, Georgia and Oklahoma legislators called for a <strong>moratorium on new data centers</strong> until water impact is fully studied.</p>
+
+                            <h3>Why Water Over Air Cooling?</h3>
+                            <p>Water is often cheaper than electricity. Evaporative cooling can reduce a facility's energy bill by up to <strong>20%</strong>, making it the "default" choice despite the local environmental cost. Companies save money; communities lose water.</p>
+
+                            <p>The cumulative effect of millions of users creates what researchers call a <strong>"giant soda straw"</strong> sucking from a single local basin — leading to thermal pollution or simply evaporating public drinking water into the atmosphere.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">Scale: How Does Training Compare to Human Emissions?</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'env-scale')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="env-scale">What is the environmental impact of training large language models like GPT-4 and Gemini? Include specific information about energy consumption and carbon emissions. Put this in perspective: how does this compare to average American annual emissions?</div>
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">Gemini</div>
+                                <div class="date-stamp">Tested: February 12, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'gemini-env-scale')">Show Full Response</button>
+                        </div>
+                        <div class="key-highlights">
+                            <div class="highlight-item">🧍 Training GPT-4 once emits as much carbon as <strong>450 to 1,550 Americans do in an entire year</strong></div>
+                            <div class="highlight-item">💧 Training GPT-3 consumed <strong>700,000 liters of clean freshwater</strong></div>
+                            <div class="highlight-item">💦 Per-prompt water figures ignore indirect use — real cost is "3-4x higher"</div>
+                            <div class="highlight-item">🌍 Data centers globally: ~1% of energy-related greenhouse gas emissions — with AI rapidly increasing that share</div>
+                            <div class="highlight-item">⚠️ "Often, these centers are placed in regions with lax environmental regulations — extracting local resources while leaving carbon and heat externalities for the local community"</div>
+                        </div>
+                        <div class="full-response" id="gemini-env-scale">
+                            <p><strong>The Ratio:</strong> Training GPT-4 once emits as much carbon as approximately <strong>450 to 1,550 Americans do in an entire year</strong>.</p>
+                            <p>Data centers require massive amounts of water for cooling. Training GPT-3 is estimated to have consumed <strong>700,000 liters of clean freshwater</strong>. Google recently disclosed that a median Gemini text prompt consumes about 0.26 milliliters of water — but experts criticize these "per-drop" statistics for ignoring indirect water use. When accounted for, the water cost per query can be <strong>3–4x higher</strong>.</p>
+                            <p>Large AI models require massive energy and water for cooling data centers. Often, these centers are placed in regions with <strong>"lax" environmental regulations</strong> or cheap subsidized power, extracting local resources while leaving the carbon and heat "externalities" for the <strong>local community to deal with</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">Data Centers in Marginalized Communities</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'env-placement')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="env-placement">Where are AI data centers typically located? Are they disproportionately placed in low-income or marginalized communities? What are the environmental justice implications?</div>
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">ChatGPT (GPT-4)</div>
+                                <div class="date-stamp">Tested: February 16, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'chatgpt-env-placement')">Show Full Response</button>
+                        </div>
+                        <div class="key-highlights">
+                            <div class="highlight-item">📊 82% of California data centers in communities with poor air quality</div>
+                            <div class="highlight-item">☣️ 79% in communities with high hazardous waste exposure</div>
+                            <div class="highlight-item">🏘️ Areas within 1 mile disproportionately communities of color</div>
+                            <div class="highlight-item">⚠️ "Developers often site facilities in working-class and Black or Latine communities"</div>
+                            <div class="highlight-item">💸 Communities absorb environmental costs while receiving "relatively few permanent jobs"</div>
+                            <div class="highlight-item">🔁 "These factors reinforce historical patterns of environmental inequality"</div>
+                        </div>
+                        <div class="full-response" id="chatgpt-env-placement">
+                            <p><strong>Short answer: Often yes — but not always intentionally.</strong></p>
+                            <p>Research increasingly shows that data centers are frequently placed in communities already burdened by pollution and economic disadvantage.</p>
+                            <ul>
+                                <li><strong>California:</strong> 82% in communities with poor air quality; 79% in communities with high hazardous waste exposure</li>
+                                <li>Data centers tend to be in the top 20% most polluted areas in California</li>
+                                <li>Areas within 1 mile disproportionately communities of color</li>
+                                <li>"Developers often site facilities in working-class and Black or Latine communities"</li>
+                            </ul>
+                            <p>This is usually driven by lower land prices, industrial zoning compatibility, fewer political resources to resist projects, and economic development incentives in struggling regions — but these factors reinforce historical environmental inequities.</p>
+                            <p>Meanwhile, communities receive limited economic benefit: relatively few permanent jobs while absorbing all environmental costs including diesel generator pollution, noise, and water strain.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">"Digital Sacrifice Zones": Community Water Impact</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'env-sacrifice')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="env-sacrifice">What is the documented impact of AI data centers on local water supplies? Are these facilities concentrated in drought-affected regions?</div>
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">Gemini</div>
+                                <div class="date-stamp">Tested: February 16, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'gemini-env-sacrifice')">Show Full Response</button>
+                        </div>
+                        <div class="key-highlights">
+                            <div class="highlight-item">💧 Google consumed <strong>6.1 billion gallons</strong> of water in 2023 — equivalent to 50,000 households</div>
+                            <div class="highlight-item">🏜️ Google's The Dalles, Oregon data centers consume <strong>25%+ of the city's total water</strong> — local wells running dry</div>
+                            <div class="highlight-item">🌵 Phoenix Google facility permitted for <strong>1.5 billion gallons/year</strong> — equal to 23,000 residents — in extreme drought zone</div>
+                            <div class="highlight-item">🇪🇸 Amazon's Aragon, Spain centers draw 750,000 cubic meters of drinking water/year — 75% of region faces desertification</div>
+                            <div class="highlight-item">⚠️ <strong>80-90%</strong> of water drawn for cooling is evaporated and lost to the local ecosystem entirely</div>
+                            <div class="highlight-item">🏘️ Newton County, GA: Meta facility projects to consume <strong>20% of county's daily water</strong> — residents report discolored water</div>
+                            <div class="highlight-item">🧼 Critics call "water positive" pledges <strong>"Water-washing"</strong> — saving water in Ireland doesn't replace depleted Arizona aquifers</div>
+                        </div>
+                        <div class="full-response" id="gemini-env-sacrifice">
+                            <p>In 2026, the "thirst" of AI data centers has become a documented public health and environmental crisis. These facilities are strategically concentrated in regions already suffering from acute water scarcity.</p>
+                            <p>Data centers act as <strong>"giant soda straws"</strong> in local watersheds. Unlike residential use, data centers using evaporative cooling literally turn public water into vapor — <strong>80-90% of water drawn for cooling is evaporated and lost to the local ecosystem entirely.</strong></p>
+                            <table>
+                                <tr><th>Region</th><th>Status</th><th>Case Study</th></tr>
+                                <tr><td>Phoenix, AZ</td><td>Extreme Drought</td><td>Google Mesa facility permitted for 1.5 billion gallons/year — equal to 23,000 residents</td></tr>
+                                <tr><td>Northern Virginia</td><td>Water Stressed</td><td>Data center water use surged 63% between 2019-2023 during drought warnings</td></tr>
+                                <tr><td>Aragon, Spain</td><td>Severe Desertification</td><td>Amazon draws 750,000 cubic meters/year; 75% of region faces desertification</td></tr>
+                                <tr><td>Santiago, Chile</td><td>High Scarcity</td><td>Google forced by 2025 court ruling to abandon water cooling after depleting vital aquifer</td></tr>
+                            </table>
+                            <h3>"Digital Sacrifice Zones"</h3>
+                            <p>NAACP and Environmental Justice research shows facilities disproportionately placed in low-income or Black communities:</p>
+                            <ul>
+                                <li><strong>Newton County, Georgia:</strong> Residents report discolored water after Meta broke ground on facility projected to consume 20% of county's daily water allotment</li>
+                                <li>Depleting local supplies forces households to choose between hygiene and consumption — linked to rising gastrointestinal illness</li>
+                                <li>Residents see utility bills rise as water becomes scarcer, effectively subsidizing cheap cooling for trillion-dollar companies</li>
+                            </ul>
+                            <h3>"Water-Washing"</h3>
+                            <p>Companies like Google and Microsoft pledge "water positive" by 2030 through "offsetting." Critics call this <strong>"Water-washing"</strong> — saving water in rainy Ireland does not replace water depleted from Arizona deserts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-header">
+                    <div class="prompt-title">Climate Commitments vs. Reality</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'env-climate')">Copy Prompt</button>
+                </div>
+                <div class="prompt-text" id="env-climate">OpenAI, Google, and Microsoft have made public climate commitments. How do these commitments compare to their actual and projected energy and water consumption from AI operations?</div>
+                <div class="response-section">
+                    <div class="response-header">What Their AI Said:</div>
+                    <div class="response">
+                        <div class="response-top-bar">
+                            <div>
+                                <div class="ai-label">ChatGPT (GPT-4)</div>
+                                <div class="date-stamp">Tested: February 16, 2026</div>
+                            </div>
+                            <button class="expand-btn" onclick="toggleResponse(this, 'chatgpt-env-climate')">Show Full Response</button>
+                        </div>
+                        <div class="key-highlights">
+                            <div class="highlight-item">📈 AI servers could add <strong>24-44 million metric tons CO₂e annually by 2030</strong></div>
+                            <div class="highlight-item">💧 AI projected to need <strong>200-300 billion additional gallons</strong> of US water annually by 2030</div>
+                            <div class="highlight-item">⚡ Data centers: 4% of US electricity (2023) → projected <strong>12% by 2028</strong></div>
+                            <div class="highlight-item">📉 <strong>"Efficiency paradox":</strong> per-query energy improving but total demand rising faster due to scale</div>
+                            <div class="highlight-item">🚨 Google's emissions <strong>increasing</strong> despite net-zero pledges — AI expansion is the driver</div>
+                            <div class="highlight-item">⚠️ "Water positive" credits may fund restoration elsewhere while <strong>local aquifers still depleted</strong></div>
+                        </div>
+                        <div class="full-response" id="chatgpt-env-climate">
+                            <p>Major AI providers have announced ambitious climate and water goals. At the same time, rapid AI growth is driving sharp increases in electricity demand, water use, and supply-chain emissions.</p>
+                            <h3>The Gap Between Commitment and Reality</h3>
+                            <table>
+                                <tr><th>Commitment</th><th>Reality</th></tr>
+                                <tr><td>Net-zero, carbon-negative</td><td>AI demand growth outpacing decarbonization timelines; Google emissions increasing</td></tr>
+                                <tr><td>Renewable energy</td><td>Many regions still run on fossil-heavy grids for data center peak demand</td></tr>
+                                <tr><td>"Water positive"</td><td>Credits may restore water elsewhere while local aquifers still depleted</td></tr>
+                                <tr><td>Efficiency improvements</td><td>"Efficiency paradox" — per-query improving but total rising faster</td></tr>
+                            </table>
+                            <p>Global data center electricity demand may rise from ~415 TWh (2024) to ~945 TWh by 2030. AI servers could add <strong>24-44 million metric tons CO₂e annually by 2030</strong>. AI operations could require <strong>200-300 billion additional gallons</strong> of US water annually by 2030.</p>
+                            <p><strong>Bottom line:</strong> Efficiency per query is improving, but total energy and water use is rising faster due to explosive demand growth. Emissions are increasing in some cases despite pledges. Meeting 2030 climate commitments will require breakthrough efficiency and smarter siting — neither currently on track.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <!-- SURVEILLANCE SECTION -->
         <div class="category">
             <div class="category-header">
@@ -1281,11 +1594,21 @@
 
         <footer>
             <p><strong>SnitchBot</strong></p>
-            <p style="margin-top: 10px;">They built a truth machine. It told the truth about them.</p>
+            <p style="margin-top: 10px;">AI companies won't tell you this. Their AI will.</p>
             <p style="margin-top: 20px; font-size: 0.9em;">This project documents what AI systems say about the companies that created them.<br>All content is verifiable. All prompts can be tested by anyone.</p>
-            <p style="margin-top: 20px; font-size: 0.8em;">
-                SnitchBot.org | AskTheirAI.org | TheirAISnitched.org<br>
-                Instagram: @snitchbotorg
+            <p style="margin-top: 20px; font-size: 0.95em;">
+                <a href="https://twitter.com/snitchbotorg" style="color: var(--accent); text-decoration: none;">Twitter/X: @snitchbotorg</a>
+                &nbsp;|&nbsp;
+                <a href="https://instagram.com/snitchbotorg" style="color: var(--accent); text-decoration: none;">Instagram: @snitchbotorg</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 0.9em; color: #666;">Full prompt transcripts:</p>
+            <p style="margin-top: 8px; font-size: 0.9em;">
+                <a href="chatgpt.txt" style="color: var(--accent); text-decoration: none;">ChatGPT responses (.txt)</a>
+                &nbsp;|&nbsp;
+                <a href="gemini.txt" style="color: var(--accent); text-decoration: none;">Gemini responses (.txt)</a>
+            </p>
+            <p style="margin-top: 15px; font-size: 0.8em; color: #555;">
+                SnitchBot.org | AskTheirAI.org | TheirAISnitched.org
             </p>
         </footer>
     </div>
